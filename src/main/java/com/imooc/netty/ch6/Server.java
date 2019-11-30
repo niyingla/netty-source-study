@@ -11,6 +11,7 @@ import io.netty.channel.socket.nio.NioServerSocketChannel;
 import io.netty.util.AttributeKey;
 
 /**
+ * pipeline 初始化时创建 底层是双向链表
  * @author
  */
 public final class Server {

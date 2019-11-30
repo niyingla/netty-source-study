@@ -5,6 +5,7 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 
 /**
+ * SimpleChannelInboundHandler 可以自动释放ByteBuf 防止内存泄漏
  * @author
  */
 public class AuthHandler extends SimpleChannelInboundHandler<ByteBuf> {

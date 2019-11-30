@@ -5,6 +5,7 @@ import io.netty.channel.ChannelOutboundHandlerAdapter;
 import io.netty.channel.ChannelPromise;
 
 /**
+ * Out说明事情做完了 事件的结束  （可以主动）
  * @author
  */
 public class OutBoundHandlerC extends ChannelOutboundHandlerAdapter {

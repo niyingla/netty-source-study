@@ -12,6 +12,7 @@ public class OutBoundHandlerA extends ChannelOutboundHandlerAdapter {
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
         System.out.println("OutBoundHandlerA: " + msg);
+        //向下传播事件
         ctx.write(msg, promise);
     }
 }
