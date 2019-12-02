@@ -9,6 +9,10 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
 /**
+ * direct 不受jvm管制的内存 需要手动回收
+ * heap jvm内存 jvm管理个和gc
+ * pooled 池化 unpooled 非池化
+ * unsafe 依赖jdk unsafe对象
  * @author
  */
 public final class Server {
