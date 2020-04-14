@@ -35,6 +35,7 @@ public class ClientBusinessHandler extends SimpleChannelInboundHandler<ByteBuf> 
     public void channelActive(ChannelHandlerContext ctx) {
         ctx.executor().scheduleAtFixedRate(() -> {
 
+            //获取一个ByteBuf =ByteBufAllocator.ioBuffer();
             ByteBuf byteBuf = ctx.alloc().ioBuffer();
             byteBuf.writeLong(System.currentTimeMillis());
             ctx.channel().writeAndFlush(byteBuf);
