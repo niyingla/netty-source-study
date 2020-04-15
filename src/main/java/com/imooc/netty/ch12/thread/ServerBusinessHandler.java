@@ -15,12 +15,20 @@ public class ServerBusinessHandler extends SimpleChannelInboundHandler<ByteBuf> 
 
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
+        //获取内存
         ByteBuf data = Unpooled.directBuffer();
+        //获取请求内容
         data.writeBytes(msg);
         Object result = getResult(data);
+        //写回原结果
         ctx.channel().writeAndFlush(result);
     }
 
+    /**
+     * 假设为接收数据后的处理逻辑
+     * @param data
+     * @return
+     */
     protected Object getResult(ByteBuf data) {
         // 90.0% == 1ms
         // 95.0% == 10ms  1000 50 > 10ms

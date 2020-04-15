@@ -25,11 +25,13 @@ public class Server {
         bootstrap.channel(NioServerSocketChannel.class);
         bootstrap.childOption(ChannelOption.SO_REUSEADDR, true);
 
-
+        //加入处理逻辑
         bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel ch) {
+                //拆解数据包
                 ch.pipeline().addLast(new FixedLengthFrameDecoder(Long.BYTES));
+                //业务逻辑处理
                 ch.pipeline().addLast(businessGroup, ServerBusinessHandler.INSTANCE);
 //                ch.pipeline().addLast(ServerBusinessThreadPoolHandler.INSTANCE);
             }

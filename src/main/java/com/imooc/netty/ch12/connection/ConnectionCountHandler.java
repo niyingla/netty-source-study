@@ -14,17 +14,28 @@ public class ConnectionCountHandler extends ChannelInboundHandlerAdapter {
     private AtomicInteger nConnection = new AtomicInteger();
 
     public ConnectionCountHandler() {
-        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() -> {
-            System.out.println("connections: " + nConnection.get());
-        }, 0, 2, TimeUnit.SECONDS);
+
+
+        //每两秒计算一次连接数
+        Executors.newSingleThreadScheduledExecutor().scheduleAtFixedRate(() ->
+                System.out.println("connections: " + nConnection.get()),
+                0, 2, TimeUnit.SECONDS);
 
     }
 
+    /**
+     * 创建一个连接  +1
+     * @param ctx
+     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         nConnection.incrementAndGet();
     }
 
+    /**
+     * 消除一个连接  -1
+     * @param ctx
+     */
     @Override
     public void channelInactive(ChannelHandlerContext ctx) {
         nConnection.decrementAndGet();
