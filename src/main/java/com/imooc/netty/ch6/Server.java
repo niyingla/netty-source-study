@@ -21,8 +21,8 @@ public final class Server {
         EventLoopGroup workerGroup = new NioEventLoopGroup();
 
         try {
-            ServerBootstrap b = new ServerBootstrap();
-            b.group(bossGroup, workerGroup)
+            ServerBootstrap bootstrap = new ServerBootstrap();
+            bootstrap.group(bossGroup, workerGroup)
                     .channel(NioServerSocketChannel.class)
                     .childOption(ChannelOption.TCP_NODELAY, true)
                     .childAttr(AttributeKey.newInstance("childAttr"), "childAttrValue")
@@ -35,7 +35,7 @@ public final class Server {
                         }
                     });
 
-            ChannelFuture f = b.bind(8888).sync();
+            ChannelFuture f = bootstrap.bind(8888).sync();
 
             f.channel().closeFuture().sync();
         } finally {

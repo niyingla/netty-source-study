@@ -15,6 +15,11 @@ import io.netty.util.AttributeKey;
  */
 public final class Server {
 
+    /**
+     * 每通过一次字节 InBound OutBound 都会走一次
+     * @param args
+     * @throws Exception
+     */
     public static void main(String[] args) throws Exception {
         EventLoopGroup bossGroup = new NioEventLoopGroup(1);
         EventLoopGroup workerGroup = new NioEventLoopGroup();

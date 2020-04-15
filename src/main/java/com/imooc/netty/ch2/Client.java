@@ -28,8 +28,6 @@ public class Client {
                     }
                     sleep();
                 }
-
-
             }
         }).start();
 

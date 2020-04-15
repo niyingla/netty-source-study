@@ -34,28 +34,18 @@ public class ClientBusinessHandler extends SimpleChannelInboundHandler<ByteBuf> 
         }
     });
 
-
-    /**
-     * channelActive 	当前channel激活的时候
-     * @param ctx
-     */
     @Override
     public void channelActive(ChannelHandlerContext ctx) {
         ctx.executor().scheduleAtFixedRate(() -> {
+
+            //获取一个ByteBuf =ByteBufAllocator.ioBuffer();
             ByteBuf byteBuf = ctx.alloc().ioBuffer();
-            //激活后定时 隔1s 写入时间戳
             byteBuf.writeLong(System.currentTimeMillis());
             ctx.channel().writeAndFlush(byteBuf);
 
         }, 0, 1, TimeUnit.SECONDS);
     }
 
-    /**
-     * 当前channel从远端读取到数据
-     * 拿到服务端写回的时间戳
-     * @param ctx
-     * @param msg
-     */
     @Override
     protected void channelRead0(ChannelHandlerContext ctx, ByteBuf msg) {
         //获取时间差
