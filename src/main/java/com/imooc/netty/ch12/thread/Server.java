@@ -29,9 +29,10 @@ public class Server {
         bootstrap.childHandler(new ChannelInitializer<SocketChannel>() {
             @Override
             protected void initChannel(SocketChannel ch) {
-                //拆解数据包
+                //拆解数据包     Long类型
                 ch.pipeline().addLast(new FixedLengthFrameDecoder(Long.BYTES));
-                //业务逻辑处理
+//                ch.pipeline().addLast(ServerBusinessHandler.INSTANCE);
+                //指定线程池 业务逻辑处理
                 ch.pipeline().addLast(businessGroup, ServerBusinessHandler.INSTANCE);
 //                ch.pipeline().addLast(ServerBusinessThreadPoolHandler.INSTANCE);
             }

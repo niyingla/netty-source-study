@@ -8,6 +8,10 @@ import io.netty.channel.SimpleChannelInboundHandler;
 
 import java.util.concurrent.ThreadLocalRandom;
 
+/**
+ * @Sharable annotation 表明Handler可以在不同Channel之间共享。
+ * 只要加上@ChannelHandler.Sharable注解，他在整个生命周期中就是以单例的形式存在了
+ */
 @ChannelHandler.Sharable
 public class ServerBusinessHandler extends SimpleChannelInboundHandler<ByteBuf> {
     public static final ChannelHandler INSTANCE = new ServerBusinessHandler();
