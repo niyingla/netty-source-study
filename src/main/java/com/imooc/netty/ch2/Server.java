@@ -18,12 +18,7 @@ public class Server {
     }
 
     public void start() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                doStart();
-            }
-        }).start();
+        new Thread(() -> doStart()).start();
     }
 
     private void doStart() {
