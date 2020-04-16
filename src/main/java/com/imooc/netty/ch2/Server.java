@@ -13,6 +13,7 @@ public class Server {
             this.serverSocket = new ServerSocket(port);
             System.out.println("服务端启动成功，端口:" + port);
         } catch (IOException exception) {
+            exception.printStackTrace();
             System.out.println("服务端启动失败");
         }
     }
