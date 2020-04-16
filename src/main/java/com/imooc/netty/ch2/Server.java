@@ -13,17 +13,13 @@ public class Server {
             this.serverSocket = new ServerSocket(port);
             System.out.println("服务端启动成功，端口:" + port);
         } catch (IOException exception) {
+            exception.printStackTrace();
             System.out.println("服务端启动失败");
         }
     }
 
     public void start() {
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                doStart();
-            }
-        }).start();
+        new Thread(() -> doStart()).start();
     }
 
     private void doStart() {

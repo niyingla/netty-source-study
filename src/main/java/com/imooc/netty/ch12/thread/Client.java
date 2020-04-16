@@ -13,7 +13,7 @@ import static com.imooc.netty.ch12.thread.Constant.PORT;
 
 public class Client {
 
-    private static final String SERVER_HOST = "192.168.31.13";
+    private static final String SERVER_HOST = "127.0.0.1";
 
     public static void main(String[] args) throws Exception {
         new Client().start(PORT);
