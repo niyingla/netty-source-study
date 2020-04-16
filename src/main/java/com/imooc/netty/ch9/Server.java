@@ -24,6 +24,7 @@ public final class Server {
         try {
             ServerBootstrap b = new ServerBootstrap();
             b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).childHandler(new ChannelInitializer<SocketChannel>() {
+                //解码器 二进制流-》byteBuf（自定义数据包）
                 @Override
                 public void initChannel(SocketChannel ch) {
                     ch.pipeline().addLast(new Encoder());
