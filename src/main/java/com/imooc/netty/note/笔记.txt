@@ -1,0 +1,16 @@
+1 NIOEventLoop 主要run方法
+
+2 NioByteUnsafe  对应数据流读写
+NioMessageUnsafe 对应新连接过来
+
+3 Pipeline 逻辑链 每次数据读写都会经过这个逻辑链
+ 
+4 channelHandler 逻辑处理器
+
+5 读写基于ByteBuf
+
+6 主要的服务端主要AbstractChannel 和NioServerSocketChannel
+
+7 服务端doReadMessage读取一个链接  客户端读取一个数据	
+
+8 unsafe负责数据读写
