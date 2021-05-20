@@ -1,4 +1,6 @@
-1 NIOEventLoop 主要run方法
+1
+NIOEventLoop 主要run方法 和线程池中某一个线程绑定
+channel就是socket包装
 
 2 NioByteUnsafe  对应数据流读写
 NioMessageUnsafe 对应新连接过来
